@@ -7,6 +7,7 @@ int n=0;
 
 void* even()
 {
+	//if n is even lock otherwise unlock
 	pthread_mutex_lock(&lock);
 	do
 	{
@@ -25,6 +26,7 @@ void* even()
 
 void* odd()
 {
+	//if n is odd lock otherwise unlock
 	pthread_mutex_lock(&lock);
 	do
 	{
@@ -44,13 +46,15 @@ void* odd()
 int main()
 {
 	pthread_t pid,tid;
-	int rv=pthread_mutex_init(&lock,NULL);
+	int t = pthread_mutex_init(&lock,NULL);
 	pthread_create(&tid,NULL,&even,NULL);
 	pthread_create(&pid,NULL,&odd,NULL);
-	if(rv)
+	if(t)
 	{
 		printf("Error");
 	}
 	pthread_join(tid,NULL);
+	pthread_mutex_destroy(&lock);
+	return 0;
 }
 
