@@ -3,7 +3,7 @@
 int main()
 {
 	int n,burstTime[20],WaitTime[20],TurnAroundTime[20],avWaitTime=0,avTurnAroundTime=0,i,j;
-	printf("Enter total number of processes(maximum 20):");
+	printf("Enter total number of processes:");
 	scanf("%d",&n);
  
 	printf("\nEnter Process Burst Time\n");
@@ -17,7 +17,7 @@ int main()
 	//calculating Waiting time
 	for(i=1;i<n;i++){
 		WaitTime[i]=0;
-		for(j=0;j<i;j++)
+		for(j=0;j<i;j++)					//wait time for each process = wait time of prev + burst time
 			WaitTime[i]+=burstTime[j];
 	}
  

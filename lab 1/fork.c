@@ -29,8 +29,7 @@ int main(int argc, char* argv[]){
 			printf("\nChild ends\n");
 			printf("parent id %d  \n", getppid());
 			printf("child id %d  \n",getpid());
-			
-		}	
+			}	
 		}
 	}
 	else{
