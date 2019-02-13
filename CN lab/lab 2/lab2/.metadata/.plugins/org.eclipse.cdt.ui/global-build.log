@@ -1,0 +1,4 @@
+21:41:56 **** Incremental Build of configuration debug for project Project1 ****
+make MODE=debug all 
+node.cc
+Creating executable: out/gcc-debug//Project1_dbg
