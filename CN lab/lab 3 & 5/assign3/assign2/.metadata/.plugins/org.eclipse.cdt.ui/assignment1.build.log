@@ -1,0 +1,6 @@
+20:45:12 **** Incremental Build of configuration release for project assignment1 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.
+
+20:45:12 Build Finished (took 76ms)
+

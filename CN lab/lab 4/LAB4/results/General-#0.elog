@@ -1,0 +1,120 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1282 rid General-0-20190310-12:43:05-8928 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t ForwardingNetwork n ForwardingNetwork cm 1
+MS id 1 d bgb=382,310
+MC id 2 c Node t Node pid 1 n N[0]
+MS id 2 d is=vl
+GC m 2 g 1048576 n in i 0 o 0
+GC m 2 g 1048577 n in i 1 o 0
+GC m 2 g 1048578 n in i 2 o 0
+GC m 2 g 2621440 n out i 0 o 1
+GC m 2 g 2621441 n out i 1 o 1
+GC m 2 g 2621442 n out i 2 o 1
+MC id 3 c Node t Node pid 1 n N[1]
+MS id 3 d is=vl
+GC m 3 g 1048576 n in i 0 o 0
+GC m 3 g 1048577 n in i 1 o 0
+GC m 3 g 1048578 n in i 2 o 0
+GC m 3 g 2621440 n out i 0 o 1
+GC m 3 g 2621441 n out i 1 o 1
+GC m 3 g 2621442 n out i 2 o 1
+MC id 4 c Node t Node pid 1 n N[2]
+MS id 4 d is=vl
+GC m 4 g 1048576 n in i 0 o 0
+GC m 4 g 1048577 n in i 1 o 0
+GC m 4 g 1048578 n in i 2 o 0
+GC m 4 g 2621440 n out i 0 o 1
+GC m 4 g 2621441 n out i 1 o 1
+GC m 4 g 2621442 n out i 2 o 1
+MC id 5 c Node t Node pid 1 n N[3]
+MS id 5 d is=vl
+GC m 5 g 1048576 n in i 0 o 0
+GC m 5 g 1048577 n in i 1 o 0
+GC m 5 g 1048578 n in i 2 o 0
+GC m 5 g 2621440 n out i 0 o 1
+GC m 5 g 2621441 n out i 1 o 1
+GC m 5 g 2621442 n out i 2 o 1
+MC id 6 c Node t Node pid 1 n N[4]
+MS id 6 d is=vl
+GC m 6 g 1048576 n in i 0 o 0
+GC m 6 g 1048577 n in i 1 o 0
+GC m 6 g 1048578 n in i 2 o 0
+GC m 6 g 2621440 n out i 0 o 1
+GC m 6 g 2621441 n out i 1 o 1
+GC m 6 g 2621442 n out i 2 o 1
+MC id 7 c Node t Node pid 1 n N[5]
+MS id 7 d is=vl
+GC m 7 g 1048576 n in i 0 o 0
+GC m 7 g 1048577 n in i 1 o 0
+GC m 7 g 1048578 n in i 2 o 0
+GC m 7 g 2621440 n out i 0 o 1
+GC m 7 g 2621441 n out i 1 o 1
+GC m 7 g 2621442 n out i 2 o 1
+CC sm 3 sg 2621440 dm 2 dg 1048576
+CS sm 3 sg 2621440 d ""
+CC sm 4 sg 2621440 dm 2 dg 1048577
+CS sm 4 sg 2621440 d ""
+CC sm 2 sg 2621440 dm 3 dg 1048576
+CS sm 2 sg 2621440 d ""
+CC sm 5 sg 2621440 dm 3 dg 1048577
+CS sm 5 sg 2621440 d ""
+CC sm 6 sg 2621440 dm 3 dg 1048578
+CS sm 6 sg 2621440 d ""
+CC sm 2 sg 2621441 dm 4 dg 1048576
+CS sm 2 sg 2621441 d ""
+CC sm 5 sg 2621441 dm 4 dg 1048577
+CS sm 5 sg 2621441 d ""
+CC sm 6 sg 2621441 dm 4 dg 1048578
+CS sm 6 sg 2621441 d ""
+CC sm 3 sg 2621441 dm 5 dg 1048576
+CS sm 3 sg 2621441 d ""
+CC sm 4 sg 2621441 dm 5 dg 1048577
+CS sm 4 sg 2621441 d ""
+CC sm 7 sg 2621440 dm 5 dg 1048578
+CS sm 7 sg 2621440 d ""
+CC sm 3 sg 2621442 dm 6 dg 1048576
+CS sm 3 sg 2621442 d ""
+CC sm 4 sg 2621442 dm 6 dg 1048577
+CS sm 4 sg 2621442 d ""
+CC sm 7 sg 2621441 dm 6 dg 1048578
+CS sm 7 sg 2621441 d ""
+CC sm 5 sg 2621442 dm 7 dg 1048576
+CS sm 5 sg 2621442 d ""
+CC sm 6 sg 2621442 dm 7 dg 1048577
+CS sm 6 sg 2621442 d ""
+MB sm 1 tm 2 m initialize(0)
+ME
+MB sm 1 tm 3 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe -1
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe 0
+ES t 0
+ME
+MB sm 1 tm 4 m initialize(0)
+ME
+MB sm 1 tm 5 m initialize(0)
+ME
+MB sm 1 tm 6 m initialize(0)
+ME
+MB sm 1 tm 7 m initialize(0)
+ME
+
+E # 1 t 0 m 3 ce 0 msg 0
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n "" pe -1
+BS id 1 tid 1 eid 1 etid 1 c N_PDU n "" pe 1
+SH sm 3 sg 2621441 pd 0.05
+ES t 0.05
+CL id 1 tid 1 eid 1 etid 1 c N_PDU n "" pe 1 cid 2
+
+E # 2 t 0.05 m 5 ce 1 msg 1
+BS id 1 tid 1 eid 1 etid 1 c N_PDU n "" pe 2
+SH sm 5 sg 2621442 pd 0.1
+ES t 0.15
+CL id 1 tid 1 eid 1 etid 1 c N_PDU n "" pe 2 cid 3
+- INFO : Routing Packet
+
+E # 3 t 0.15 m 7 ce 2 msg 1
+BU id 7 txt Delete
+DM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n "" pe 3
+- INFO : Delay Of PAcket from Node 1 to 5 is :- 150 ms
+SE e 0 c 13 m "No more events, simulation completed -- at t=0.15s, event #3"

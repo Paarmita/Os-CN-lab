@@ -1,0 +1,8 @@
+20:45:06 **** Incremental Build of configuration release for project assignment1 ****
+make MODE=release all 
+node.cc
+N_PDU_m.cc
+Creating executable: out/gcc-release//assignment1
+20:45:12 **** Incremental Build of configuration release for project assignment1 ****
+make MODE=release all 
+make: Nothing to be done for 'all'.

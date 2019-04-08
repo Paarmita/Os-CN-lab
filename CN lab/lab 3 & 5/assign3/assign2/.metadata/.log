@@ -1,0 +1,151 @@
+!SESSION 2019-02-05 00:42:57.804 -----------------------------------------------
+eclipse.buildId=5.4.1.180629-5e28390
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.omnetpp.main 1 0 2019-02-05 00:44:10.952
+!MESSAGE OMNeT++ IDE 5.4.1.180629-5e28390 started.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2019-02-05 00:44:14.746
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] failed: connect timed out. ; version: 2.0.7.v20170906-1327
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to dev.eclipse.org:443 [dev.eclipse.org/198.41.30.200] failed: connect timed out
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:150)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.http.client.fluent.Request.internalExecute(Request.java:173)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:262)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.request(IO.java:170)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:64)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:124)
+	at com.google.common.util.concurrent.AbstractIdleService$DelegateService$1.run(AbstractIdleService.java:62)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:337)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:141)
+	... 17 more
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 17 2019-02-05 00:44:14.838
+!MESSAGE Server ‘org.example.aer.opp’ failed with exception: Connect to aer.ctrlflow.com:443 [aer.ctrlflow.com/138.201.81.7] failed: connect timed out. ; version: 2.0.7.v20170906-1327
+!STACK 0
+org.apache.http.conn.ConnectTimeoutException: Connect to aer.ctrlflow.com:443 [aer.ctrlflow.com/138.201.81.7] failed: connect timed out
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:150)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.apache.http.client.fluent.Request.internalExecute(Request.java:173)
+	at org.apache.http.client.fluent.Executor.execute(Executor.java:262)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.request(IO.java:170)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:64)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:124)
+	at com.google.common.util.concurrent.AbstractIdleService$DelegateService$1.run(AbstractIdleService.java:62)
+	at com.google.common.util.concurrent.Callables$4.run(Callables.java:122)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.SocketTimeoutException: connect timed out
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:337)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:141)
+	... 17 more
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-02-04 19:19:54.241
+!MESSAGE Indexed 'LAB2' (4 sources, 319 headers) in 9.98 sec: 27,762 declarations; 43,213 references; 0 unresolved inclusions; 1 syntax errors; 126 unresolved names (0.18%)
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-02-04 19:26:16.667
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-02-04 19:26:16.667
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2019-02-04 19:26:16.668
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.debug.ui 4 120 2019-02-04 20:30:47.999
+!MESSAGE Error within Debug UI: 
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at org.omnetpp.launch.SimulationLaunchShortcut$1.run(SimulationLaunchShortcut.java:319)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: org.eclipse.core.runtime.CoreException: Cannot launch simulation in debug mode: the executable's project (lab1) is not an open C++ project
+	at org.omnetpp.launch.tabs.OmnetppLaunchUtils.createUpdatedLaunchConfig(OmnetppLaunchUtils.java:379)
+	at org.omnetpp.launch.SimulationRunLaunchDelegate.getProjectsForProblemSearch(SimulationRunLaunchDelegate.java:200)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.finalLaunchCheck(LaunchConfigurationDelegate.java:173)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:868)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.omnetpp.launch.SimulationLaunchShortcut$1.run(SimulationLaunchShortcut.java:316)
+	... 1 more
+Root exception:
+org.eclipse.core.runtime.CoreException: Cannot launch simulation in debug mode: the executable's project (lab1) is not an open C++ project
+	at org.omnetpp.launch.tabs.OmnetppLaunchUtils.createUpdatedLaunchConfig(OmnetppLaunchUtils.java:379)
+	at org.omnetpp.launch.SimulationRunLaunchDelegate.getProjectsForProblemSearch(SimulationRunLaunchDelegate.java:200)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.finalLaunchCheck(LaunchConfigurationDelegate.java:173)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:868)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.omnetpp.launch.SimulationLaunchShortcut$1.run(SimulationLaunchShortcut.java:316)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.debug.ui 4 120 2019-02-04 20:31:24.147
+!MESSAGE Error within Debug UI: 
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at org.omnetpp.launch.SimulationLaunchShortcut$1.run(SimulationLaunchShortcut.java:319)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Caused by: org.eclipse.core.runtime.CoreException: Cannot launch simulation in debug mode: the executable's project (lab1) is not an open C++ project
+	at org.omnetpp.launch.tabs.OmnetppLaunchUtils.createUpdatedLaunchConfig(OmnetppLaunchUtils.java:379)
+	at org.omnetpp.launch.SimulationRunLaunchDelegate.getProjectsForProblemSearch(SimulationRunLaunchDelegate.java:200)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.finalLaunchCheck(LaunchConfigurationDelegate.java:173)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:868)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.omnetpp.launch.SimulationLaunchShortcut$1.run(SimulationLaunchShortcut.java:316)
+	... 1 more
+Root exception:
+org.eclipse.core.runtime.CoreException: Cannot launch simulation in debug mode: the executable's project (lab1) is not an open C++ project
+	at org.omnetpp.launch.tabs.OmnetppLaunchUtils.createUpdatedLaunchConfig(OmnetppLaunchUtils.java:379)
+	at org.omnetpp.launch.SimulationRunLaunchDelegate.getProjectsForProblemSearch(SimulationRunLaunchDelegate.java:200)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.finalLaunchCheck(LaunchConfigurationDelegate.java:173)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:868)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.omnetpp.launch.SimulationLaunchShortcut$1.run(SimulationLaunchShortcut.java:316)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.cdt.ui 2 0 2019-02-04 20:34:42.966
+!MESSAGE Default project not found in New C/C++ Project Wizard
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-02-04 20:34:52.405
+!MESSAGE Indexed 'assign1' (2 sources, 315 headers) in 4.46 sec: 27,411 declarations; 42,286 references; 0 unresolved inclusions; 1 syntax errors; 129 unresolved names (0.18%)
+
+!ENTRY org.eclipse.cdt.ui 2 0 2019-02-04 20:37:21.590
+!MESSAGE Default project not found in New C/C++ Project Wizard
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-02-04 20:37:24.933
+!MESSAGE Indexed 'assignment1' (0 sources, 0 headers) in 0.012 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)

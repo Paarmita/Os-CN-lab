@@ -1,0 +1,81 @@
+lspci- prints ("lists") detailed information about all PCI buses and devices in the system
+ethtool - query or control network driver and hardware settings 
+ARP- protocol for mapping an Internet Protocol address (IP address) to a physical machine address that is recognized in the local network
+ip-link - network device configuration 
+ifconfig is used to configure, or view the configuration of, a network interface.
+ip-neighbour - neighbour/arp tables management.
+ip route - used to configure the static route
+route- sed to view and manipulate the IP routing table 
+netstat- print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships 
+lsof- "list open files", which is used in many Unix-like systems to report a list of all open files and the processes that opened them.
+
+Task 1: Physical and Data link layer
+
+	1.Find out what network cards your machine has. What is the speed?(lspci)
+	lspci					enp3s0
+	ethtool enp3s0				Speed: 1000Mb/s
+
+	2.What is the current speed of the network interface? What offload features are enabled?(ethtool)
+	ethtool enp3s0				Speed: 1000Mb/s
+	ethtool -k enp3s0			
+	On features- rx-checksumming, generic-receive-offload, rx-vlan-offload, tx-vlan-offload, highdma
+
+	3.What is the MAC address of your machine?(ip link, arp)
+	link/ether 34:64:a9:1f:7f:be
+	HWaddress 70:01:b5:99:e9:67
+
+	4.How many bytes did your eth0/em1 interface receive since boot?(ifconfig)
+	RX packets 86786  bytes 104646109 (104.6 MB)
+
+	5.What is the MTU setting for eth0/em1?(ip link, ifconfig)
+	mtu 1500 bytes
+
+Task 2: Network Layer
+
+	1.What is your machine’s network address? What is the default gateway (IP address and MAC address) of your network?(ip route, route, ip neighbour)  
+	arp		MAC address of switch		lladdr 70:01:b5:99:e9:67
+	ifconfig	machine’s network address	34:64:a9:1f:7f:be
+	ifconfig	IP address			IPV4- 172.22.12.185	IPV6- fe80::91ff:95d2:bc83:e0b8
+
+	2.Show the arp entries in your machine.(arp, ip neighbour)
+	Address                  HWtype  HWaddress           Flags Mask            Iface
+	_gateway                 ether   70:01:b5:99:e9:67   C                     enp3s0
+	ip neighbour		172.22.12.1 dev enp3s0 lladdr 70:01:b5:99:e9:67 REACHABLE
+
+	3.Perform a traceroute/mtr to any web address. Provide the full traceroute/mtr output. Show how mtr and traceroute is working by packet capturing tools.(mtr, traceroute, tcpdump host)
+	Command running till localhost bz blocked due to security tracing issues
+
+	4.How many IP packets has received by your machine after current boot process?  (netstat)
+	netstat -s	51325 total packets received
+
+Task 3: Transport layer
+
+	1.Find the active TCP connection on your machine? (netstat)
+	 netstat -nap			tcp- 14		38		602 active connection openings
+
+	2.How many sockets are currently open on your machine?(netstat)
+	udp+tcp= 45
+	udp = 602 active connection openings
+	tcp = 602 active connection openings
+	 ss -s
+	Total: 1692 (kernel 0)
+	TCP:   62 (estab 45, closed 12, orphaned 2, synrecv 0, timewait 12/0), ports 0
+
+	Transport Total     IP        IPv6
+	*	  0         -         -        
+	RAW	  1         0         1        
+	UDP	  7         5         2        
+	TCP	  50        49        1        
+	INET	  58        54        4        
+	FRAG	  0         0         0      
+
+	3.How many applications on your machine accessing network services? Also identify their access protocol.(lsof)
+	netstat -an |grep :80 |wc –l
+	netstat -ant | grep LISTEN
+	tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN     
+	tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN     
+	tcp6       0      0 ::1:631                 :::*                    LISTEN     
+
+
+
+

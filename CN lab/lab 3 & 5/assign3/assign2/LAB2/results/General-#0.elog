@@ -1,0 +1,88 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1284 rid General-0-20190314-22:33:23-7242 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t Twonode n Twonode cm 1
+MS id 1 d ""
+MC id 2 c omnetpp::cModule t Node pid 1 n N1 cm 1
+GC m 2 g 0 n gIn o 0
+GC m 2 g 3 n gOut o 1
+MS id 2 d ""
+MC id 3 c omnetpp::cModule t Node pid 1 n N2 cm 1
+GC m 3 g 0 n gIn o 0
+GC m 3 g 3 n gOut o 1
+MS id 3 d ""
+CC sm 3 sg 3 dm 2 dg 0
+CS sm 3 sg 3 d ""
+CC sm 2 sg 3 dm 3 dg 0
+CS sm 2 sg 3 d ""
+MC id 6 c Network_layer t Network_layer pid 2 n nl
+GC m 6 g 0 n from_dll o 0
+GC m 6 g 3 n to_dll o 1
+MS id 6 d ""
+MC id 7 c Datalink_layer t Datalink_layer pid 2 n dll
+GC m 7 g 0 n from_nl o 0
+GC m 7 g 3 n to_nl o 1
+GC m 7 g 4 n from_nd o 0
+GC m 7 g 7 n to_nd o 1
+MS id 7 d ""
+CC sm 6 sg 3 dm 7 dg 0
+CC sm 7 sg 3 dm 6 dg 0
+CC sm 2 sg 0 dm 7 dg 4
+CC sm 7 sg 7 dm 2 dg 3
+MC id 8 c Network_layer t Network_layer pid 3 n nl
+GC m 8 g 0 n from_dll o 0
+GC m 8 g 3 n to_dll o 1
+MS id 8 d ""
+MC id 9 c Datalink_layer t Datalink_layer pid 3 n dll
+GC m 9 g 0 n from_nl o 0
+GC m 9 g 3 n to_nl o 1
+GC m 9 g 4 n from_nd o 0
+GC m 9 g 7 n to_nd o 1
+MS id 9 d ""
+CC sm 8 sg 3 dm 9 dg 0
+CC sm 9 sg 3 dm 8 dg 0
+CC sm 3 sg 0 dm 9 dg 4
+CC sm 9 sg 7 dm 3 dg 3
+MB sm 1 tm 2 m initialize(0)
+ME
+MB sm 1 tm 6 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe -1
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe 0
+ES t 0
+ME
+MB sm 1 tm 7 m initialize(0)
+ME
+MB sm 1 tm 3 m initialize(0)
+ME
+MB sm 1 tm 8 m initialize(0)
+ME
+MB sm 1 tm 9 m initialize(0)
+ME
+
+E # 1 t 0 m 6 ce 0 msg 0
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n "" pe -1
+BS id 1 tid 1 eid 1 etid 1 c N_PDU n "" pe 1
+SH sm 6 sg 3
+ES t 0
+CL id 1 tid 1 eid 1 etid 1 c N_PDU n "" pe 1 cid 2
+CM id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n "" pe -1
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n "" pe 1
+ES t 400
+
+E # 2 t 0 m 7 ce 1 msg 1
+CM id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n "" pe -1
+BS id 4 tid 4 eid 1 etid 1 c D_PDU n "" pe 2
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.2
+SH sm 3 sg 0
+ES t 0.2
+CL id 4 tid 4 eid 1 etid 1 c D_PDU n "" pe 2 cid 5
+CM id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n "" pe -1
+BS id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n "" pe 2
+ES t 200
+
+E # 3 t 0.2 m 9 ce 2 msg 4
+DM id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n "" pe 3
+
+E # 4 t 200 m 7 ce 2 msg 6
+SE e 1 c 9 m "check_and_cast(): Cannot cast (omnetpp::cMessage*) to type 'N_PDU *'"

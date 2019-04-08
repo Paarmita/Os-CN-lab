@@ -1,0 +1,6 @@
+1. Download listener.c and talker.c from Beej guide on socket programming. Compile and see what they do. 
+In this assignment, you have to extend these programs to enable alternate chat between the two.
+
+2. Write client server programs to print the socket file descriptors that were ever opened by a server. 
+i.e., make the server send all the socket file descriptors it has opened to the client. 
+You may have to modify the client.c and server.c as downloaded from the Beej Guide.

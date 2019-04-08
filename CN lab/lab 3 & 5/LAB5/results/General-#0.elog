@@ -1,0 +1,971 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1284 rid General-0-20190312-23:42:13-20150 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t LayerNetwork n LayerNetwork cm 1
+MS id 1 d bgb=288,199
+MC id 2 c omnetpp::cModule t Node pid 1 n Node1 cm 1
+GC m 2 g 0 n gIn o 0
+GC m 2 g 3 n gOut o 1
+MS id 2 d p=92.46667,56.45333
+MC id 3 c omnetpp::cModule t Node pid 1 n Node2 cm 1
+GC m 3 g 0 n gIn o 0
+GC m 3 g 3 n gOut o 1
+MS id 3 d p=193.69333,103.17333
+CC sm 3 sg 3 dm 2 dg 0
+CS sm 3 sg 3 d ""
+CC sm 2 sg 3 dm 3 dg 0
+CS sm 2 sg 3 d ""
+MC id 6 c Network_layer t Network_layer pid 2 n NL
+GC m 6 g 0 n nIn o 0
+GC m 6 g 3 n nOut o 1
+MS id 6 d ""
+MC id 7 c Data_layer t Data_layer pid 2 n DL
+GC m 7 g 0 n dnIn o 0
+GC m 7 g 2 n dIn o 0
+GC m 7 g 5 n dnOut o 1
+GC m 7 g 7 n dOut o 1
+MS id 7 d p=69,79;is=s
+CC sm 2 sg 0 dm 7 dg 2
+CC sm 7 sg 7 dm 2 dg 3
+CC sm 7 sg 5 dm 6 dg 0
+CC sm 6 sg 3 dm 7 dg 0
+MC id 8 c Network_layer t Network_layer pid 3 n NL
+GC m 8 g 0 n nIn o 0
+GC m 8 g 3 n nOut o 1
+MS id 8 d ""
+MC id 9 c Data_layer t Data_layer pid 3 n DL
+GC m 9 g 0 n dnIn o 0
+GC m 9 g 2 n dIn o 0
+GC m 9 g 5 n dnOut o 1
+GC m 9 g 7 n dOut o 1
+MS id 9 d p=69,79;is=s
+CC sm 3 sg 0 dm 9 dg 2
+CC sm 9 sg 7 dm 3 dg 3
+CC sm 9 sg 5 dm 8 dg 0
+CC sm 8 sg 3 dm 9 dg 0
+MB sm 1 tm 2 m initialize(0)
+ME
+MB sm 1 tm 6 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe -1
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe 0
+ES t 0
+ME
+MB sm 1 tm 7 m initialize(0)
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe -1
+ME
+MB sm 1 tm 3 m initialize(0)
+ME
+MB sm 1 tm 8 m initialize(0)
+ME
+MB sm 1 tm 9 m initialize(0)
+CM id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe -1
+ME
+
+E # 1 t 0 m 6 ce 0 msg 0
+CM id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n "" pe -1
+BS id 3 tid 3 eid 3 etid 3 c N_PDU n "" pe 1
+SH sm 6 sg 3
+ES t 0
+CL id 3 tid 3 eid 3 etid 3 c N_PDU n "" pe 1 cid 4
+
+E # 2 t 0 m 7 ce 1 msg 3
+CM id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n "" pe -1
+CL id 5 tid 5 eid 3 etid 3 c DL_PDU n "" pe 2 cid 6
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 0
+ES t 1
+BS id 5 tid 5 eid 3 etid 3 c DL_PDU n "" pe 2
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.1
+CL id 5 tid 5 eid 3 etid 3 c DL_PDU n "" pe 2 cid 7
+
+E # 3 t 0.1 m 9 ce 2 msg 5
+CM id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n "" pe -1
+CL id 3 tid 3 eid 3 etid 3 c N_PDU n "" pe 2 cid 9
+BS id 9 tid 3 eid 9 etid 3 c N_PDU n "" pe 3
+SH sm 9 sg 5
+ES t 0.1
+CL id 9 tid 3 eid 9 etid 3 c N_PDU n "" pe 3 cid 10
+BS id 8 tid 8 eid 8 etid 8 c DL_PDU n "" pe 3
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.2
+CL id 8 tid 8 eid 8 etid 8 c DL_PDU n "" pe 3 cid 11
+
+E # 4 t 0.1 m 8 ce 3 msg 9
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 12 tid 12 eid 12 etid 12 c omnetpp::cMessage n "" pe -1
+BS id 12 tid 12 eid 12 etid 12 c N_PDU n "" pe 4
+SH sm 8 sg 3
+ES t 0.1
+CL id 12 tid 12 eid 12 etid 12 c N_PDU n "" pe 4 cid 13
+DM id 9 tid 3 eid 9 etid 3 c omnetpp::cMessage n "" pe 4
+- INFO : id  = 10Network Layer Sends ACK 
+
+E # 5 t 0.1 m 9 ce 4 msg 12
+CM id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n "" pe -1
+CL id 14 tid 14 eid 12 etid 12 c DL_PDU n "" pe 5 cid 15
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 0
+ES t 1.1
+BS id 14 tid 14 eid 12 etid 12 c DL_PDU n "" pe 5
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.2
+CL id 14 tid 14 eid 12 etid 12 c DL_PDU n "" pe 5 cid 16
+
+E # 6 t 0.2 m 7 ce 3 msg 8
+CM id 17 tid 17 eid 17 etid 17 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 2
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n "" pe 6
+
+E # 7 t 0.2 m 7 ce 5 msg 14
+CM id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n "" pe -1
+CL id 12 tid 12 eid 12 etid 12 c N_PDU n "" pe 5 cid 19
+BS id 19 tid 12 eid 19 etid 12 c N_PDU n "" pe 7
+SH sm 7 sg 5
+ES t 0.2
+CL id 19 tid 12 eid 19 etid 12 c N_PDU n "" pe 7 cid 20
+BS id 18 tid 18 eid 18 etid 18 c DL_PDU n "" pe 7
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.3
+CL id 18 tid 18 eid 18 etid 18 c DL_PDU n "" pe 7 cid 21
+
+E # 8 t 0.2 m 6 ce 7 msg 19
+CM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 22 tid 22 eid 22 etid 22 c N_PDU n "" pe 8
+SH sm 6 sg 3
+ES t 0.2
+CL id 22 tid 22 eid 22 etid 22 c N_PDU n "" pe 8 cid 23
+
+E # 9 t 0.2 m 7 ce 8 msg 22
+CM id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n "" pe -1
+CL id 24 tid 24 eid 22 etid 22 c DL_PDU n "" pe 9 cid 25
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 6
+ES t 1.2
+BS id 24 tid 24 eid 22 etid 22 c DL_PDU n "" pe 9
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.3
+CL id 24 tid 24 eid 22 etid 22 c DL_PDU n "" pe 9 cid 26
+
+E # 10 t 0.3 m 9 ce 7 msg 18
+CM id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 5
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n "" pe 10
+
+E # 11 t 0.3 m 9 ce 9 msg 24
+CM id 28 tid 28 eid 28 etid 28 c omnetpp::cMessage n "" pe -1
+CL id 22 tid 22 eid 22 etid 22 c N_PDU n "" pe 9 cid 29
+BS id 29 tid 22 eid 29 etid 22 c N_PDU n "" pe 11
+SH sm 9 sg 5
+ES t 0.3
+CL id 29 tid 22 eid 29 etid 22 c N_PDU n "" pe 11 cid 30
+BS id 28 tid 28 eid 28 etid 28 c DL_PDU n "" pe 11
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.4
+CL id 28 tid 28 eid 28 etid 28 c DL_PDU n "" pe 11 cid 31
+
+E # 12 t 0.3 m 8 ce 11 msg 29
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 32 tid 32 eid 32 etid 32 c omnetpp::cMessage n "" pe -1
+BS id 32 tid 32 eid 32 etid 32 c N_PDU n "" pe 12
+SH sm 8 sg 3
+ES t 0.3
+CL id 32 tid 32 eid 32 etid 32 c N_PDU n "" pe 12 cid 33
+DM id 29 tid 22 eid 29 etid 22 c omnetpp::cMessage n "" pe 12
+- INFO : id  = 9Network Layer Sends ACK 
+
+E # 13 t 0.3 m 9 ce 12 msg 32
+CM id 34 tid 34 eid 34 etid 34 c omnetpp::cMessage n "" pe -1
+CL id 34 tid 34 eid 32 etid 32 c DL_PDU n "" pe 13 cid 35
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 10
+ES t 1.3
+BS id 34 tid 34 eid 32 etid 32 c DL_PDU n "" pe 13
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.4
+CL id 34 tid 34 eid 32 etid 32 c DL_PDU n "" pe 13 cid 36
+
+E # 14 t 0.4 m 7 ce 11 msg 28
+CM id 37 tid 37 eid 37 etid 37 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 9
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 28 tid 28 eid 28 etid 28 c omnetpp::cMessage n "" pe 14
+
+E # 15 t 0.4 m 7 ce 13 msg 34
+CM id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n "" pe -1
+CL id 32 tid 32 eid 32 etid 32 c N_PDU n "" pe 13 cid 39
+BS id 39 tid 32 eid 39 etid 32 c N_PDU n "" pe 15
+SH sm 7 sg 5
+ES t 0.4
+CL id 39 tid 32 eid 39 etid 32 c N_PDU n "" pe 15 cid 40
+BS id 38 tid 38 eid 38 etid 38 c DL_PDU n "" pe 15
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.5
+CL id 38 tid 38 eid 38 etid 38 c DL_PDU n "" pe 15 cid 41
+
+E # 16 t 0.4 m 6 ce 15 msg 39
+CM id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 42 tid 42 eid 42 etid 42 c N_PDU n "" pe 16
+SH sm 6 sg 3
+ES t 0.4
+CL id 42 tid 42 eid 42 etid 42 c N_PDU n "" pe 16 cid 43
+
+E # 17 t 0.4 m 7 ce 16 msg 42
+CM id 44 tid 44 eid 44 etid 44 c omnetpp::cMessage n "" pe -1
+CL id 44 tid 44 eid 42 etid 42 c DL_PDU n "" pe 17 cid 45
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 14
+ES t 1.4
+BS id 44 tid 44 eid 42 etid 42 c DL_PDU n "" pe 17
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.5
+CL id 44 tid 44 eid 42 etid 42 c DL_PDU n "" pe 17 cid 46
+
+E # 18 t 0.5 m 9 ce 15 msg 38
+CM id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 13
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n "" pe 18
+
+E # 19 t 0.5 m 9 ce 17 msg 44
+CM id 48 tid 48 eid 48 etid 48 c omnetpp::cMessage n "" pe -1
+CL id 42 tid 42 eid 42 etid 42 c N_PDU n "" pe 17 cid 49
+BS id 49 tid 42 eid 49 etid 42 c N_PDU n "" pe 19
+SH sm 9 sg 5
+ES t 0.5
+CL id 49 tid 42 eid 49 etid 42 c N_PDU n "" pe 19 cid 50
+BS id 48 tid 48 eid 48 etid 48 c DL_PDU n "" pe 19
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.6
+CL id 48 tid 48 eid 48 etid 48 c DL_PDU n "" pe 19 cid 51
+
+E # 20 t 0.5 m 8 ce 19 msg 49
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 52 tid 52 eid 52 etid 52 c omnetpp::cMessage n "" pe -1
+BS id 52 tid 52 eid 52 etid 52 c N_PDU n "" pe 20
+SH sm 8 sg 3
+ES t 0.5
+CL id 52 tid 52 eid 52 etid 52 c N_PDU n "" pe 20 cid 53
+DM id 49 tid 42 eid 49 etid 42 c omnetpp::cMessage n "" pe 20
+- INFO : id  = 8Network Layer Sends ACK 
+
+E # 21 t 0.5 m 9 ce 20 msg 52
+CM id 54 tid 54 eid 54 etid 54 c omnetpp::cMessage n "" pe -1
+CL id 54 tid 54 eid 52 etid 52 c DL_PDU n "" pe 21 cid 55
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 18
+ES t 1.5
+BS id 54 tid 54 eid 52 etid 52 c DL_PDU n "" pe 21
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.6
+CL id 54 tid 54 eid 52 etid 52 c DL_PDU n "" pe 21 cid 56
+
+E # 22 t 0.6 m 7 ce 19 msg 48
+CM id 57 tid 57 eid 57 etid 57 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 17
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 48 tid 48 eid 48 etid 48 c omnetpp::cMessage n "" pe 22
+
+E # 23 t 0.6 m 7 ce 21 msg 54
+CM id 58 tid 58 eid 58 etid 58 c omnetpp::cMessage n "" pe -1
+CL id 52 tid 52 eid 52 etid 52 c N_PDU n "" pe 21 cid 59
+BS id 59 tid 52 eid 59 etid 52 c N_PDU n "" pe 23
+SH sm 7 sg 5
+ES t 0.6
+CL id 59 tid 52 eid 59 etid 52 c N_PDU n "" pe 23 cid 60
+BS id 58 tid 58 eid 58 etid 58 c DL_PDU n "" pe 23
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.7
+CL id 58 tid 58 eid 58 etid 58 c DL_PDU n "" pe 23 cid 61
+
+E # 24 t 0.6 m 6 ce 23 msg 59
+CM id 62 tid 62 eid 62 etid 62 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 62 tid 62 eid 62 etid 62 c N_PDU n "" pe 24
+SH sm 6 sg 3
+ES t 0.6
+CL id 62 tid 62 eid 62 etid 62 c N_PDU n "" pe 24 cid 63
+
+E # 25 t 0.6 m 7 ce 24 msg 62
+CM id 64 tid 64 eid 64 etid 64 c omnetpp::cMessage n "" pe -1
+CL id 64 tid 64 eid 62 etid 62 c DL_PDU n "" pe 25 cid 65
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 22
+ES t 1.6
+BS id 64 tid 64 eid 62 etid 62 c DL_PDU n "" pe 25
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.7
+CL id 64 tid 64 eid 62 etid 62 c DL_PDU n "" pe 25 cid 66
+
+E # 26 t 0.7 m 9 ce 23 msg 58
+CM id 67 tid 67 eid 67 etid 67 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 21
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 58 tid 58 eid 58 etid 58 c omnetpp::cMessage n "" pe 26
+
+E # 27 t 0.7 m 9 ce 25 msg 64
+CM id 68 tid 68 eid 68 etid 68 c omnetpp::cMessage n "" pe -1
+CL id 62 tid 62 eid 62 etid 62 c N_PDU n "" pe 25 cid 69
+BS id 69 tid 62 eid 69 etid 62 c N_PDU n "" pe 27
+SH sm 9 sg 5
+ES t 0.7
+CL id 69 tid 62 eid 69 etid 62 c N_PDU n "" pe 27 cid 70
+BS id 68 tid 68 eid 68 etid 68 c DL_PDU n "" pe 27
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.8
+CL id 68 tid 68 eid 68 etid 68 c DL_PDU n "" pe 27 cid 71
+
+E # 28 t 0.7 m 8 ce 27 msg 69
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 72 tid 72 eid 72 etid 72 c omnetpp::cMessage n "" pe -1
+BS id 72 tid 72 eid 72 etid 72 c N_PDU n "" pe 28
+SH sm 8 sg 3
+ES t 0.7
+CL id 72 tid 72 eid 72 etid 72 c N_PDU n "" pe 28 cid 73
+DM id 69 tid 62 eid 69 etid 62 c omnetpp::cMessage n "" pe 28
+- INFO : id  = 7Network Layer Sends ACK 
+
+E # 29 t 0.7 m 9 ce 28 msg 72
+CM id 74 tid 74 eid 74 etid 74 c omnetpp::cMessage n "" pe -1
+CL id 74 tid 74 eid 72 etid 72 c DL_PDU n "" pe 29 cid 75
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 26
+ES t 1.7
+BS id 74 tid 74 eid 72 etid 72 c DL_PDU n "" pe 29
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 0.8
+CL id 74 tid 74 eid 72 etid 72 c DL_PDU n "" pe 29 cid 76
+
+E # 30 t 0.8 m 7 ce 27 msg 68
+CM id 77 tid 77 eid 77 etid 77 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 25
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 68 tid 68 eid 68 etid 68 c omnetpp::cMessage n "" pe 30
+
+E # 31 t 0.8 m 7 ce 29 msg 74
+CM id 78 tid 78 eid 78 etid 78 c omnetpp::cMessage n "" pe -1
+CL id 72 tid 72 eid 72 etid 72 c N_PDU n "" pe 29 cid 79
+BS id 79 tid 72 eid 79 etid 72 c N_PDU n "" pe 31
+SH sm 7 sg 5
+ES t 0.8
+CL id 79 tid 72 eid 79 etid 72 c N_PDU n "" pe 31 cid 80
+BS id 78 tid 78 eid 78 etid 78 c DL_PDU n "" pe 31
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.9
+CL id 78 tid 78 eid 78 etid 78 c DL_PDU n "" pe 31 cid 81
+
+E # 32 t 0.8 m 6 ce 31 msg 79
+CM id 82 tid 82 eid 82 etid 82 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 82 tid 82 eid 82 etid 82 c N_PDU n "" pe 32
+SH sm 6 sg 3
+ES t 0.8
+CL id 82 tid 82 eid 82 etid 82 c N_PDU n "" pe 32 cid 83
+
+E # 33 t 0.8 m 7 ce 32 msg 82
+CM id 84 tid 84 eid 84 etid 84 c omnetpp::cMessage n "" pe -1
+CL id 84 tid 84 eid 82 etid 82 c DL_PDU n "" pe 33 cid 85
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 30
+ES t 1.8
+BS id 84 tid 84 eid 82 etid 82 c DL_PDU n "" pe 33
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 0.9
+CL id 84 tid 84 eid 82 etid 82 c DL_PDU n "" pe 33 cid 86
+
+E # 34 t 0.9 m 9 ce 31 msg 78
+CM id 87 tid 87 eid 87 etid 87 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 29
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 78 tid 78 eid 78 etid 78 c omnetpp::cMessage n "" pe 34
+
+E # 35 t 0.9 m 9 ce 33 msg 84
+CM id 88 tid 88 eid 88 etid 88 c omnetpp::cMessage n "" pe -1
+CL id 82 tid 82 eid 82 etid 82 c N_PDU n "" pe 33 cid 89
+BS id 89 tid 82 eid 89 etid 82 c N_PDU n "" pe 35
+SH sm 9 sg 5
+ES t 0.9
+CL id 89 tid 82 eid 89 etid 82 c N_PDU n "" pe 35 cid 90
+BS id 88 tid 88 eid 88 etid 88 c DL_PDU n "" pe 35
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1
+CL id 88 tid 88 eid 88 etid 88 c DL_PDU n "" pe 35 cid 91
+
+E # 36 t 0.9 m 8 ce 35 msg 89
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 92 tid 92 eid 92 etid 92 c omnetpp::cMessage n "" pe -1
+BS id 92 tid 92 eid 92 etid 92 c N_PDU n "" pe 36
+SH sm 8 sg 3
+ES t 0.9
+CL id 92 tid 92 eid 92 etid 92 c N_PDU n "" pe 36 cid 93
+DM id 89 tid 82 eid 89 etid 82 c omnetpp::cMessage n "" pe 36
+- INFO : id  = 6Network Layer Sends ACK 
+
+E # 37 t 0.9 m 9 ce 36 msg 92
+CM id 94 tid 94 eid 94 etid 94 c omnetpp::cMessage n "" pe -1
+CL id 94 tid 94 eid 92 etid 92 c DL_PDU n "" pe 37 cid 95
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 34
+ES t 1.9
+BS id 94 tid 94 eid 92 etid 92 c DL_PDU n "" pe 37
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1
+CL id 94 tid 94 eid 92 etid 92 c DL_PDU n "" pe 37 cid 96
+
+E # 38 t 1 m 7 ce 35 msg 88
+CM id 97 tid 97 eid 97 etid 97 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 33
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 88 tid 88 eid 88 etid 88 c omnetpp::cMessage n "" pe 38
+
+E # 39 t 1 m 7 ce 37 msg 94
+CM id 98 tid 98 eid 98 etid 98 c omnetpp::cMessage n "" pe -1
+CL id 92 tid 92 eid 92 etid 92 c N_PDU n "" pe 37 cid 99
+BS id 99 tid 92 eid 99 etid 92 c N_PDU n "" pe 39
+SH sm 7 sg 5
+ES t 1
+CL id 99 tid 92 eid 99 etid 92 c N_PDU n "" pe 39 cid 100
+BS id 98 tid 98 eid 98 etid 98 c DL_PDU n "" pe 39
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 1.1
+CL id 98 tid 98 eid 98 etid 98 c DL_PDU n "" pe 39 cid 101
+
+E # 40 t 1 m 6 ce 39 msg 99
+CM id 102 tid 102 eid 102 etid 102 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 102 tid 102 eid 102 etid 102 c N_PDU n "" pe 40
+SH sm 6 sg 3
+ES t 1
+CL id 102 tid 102 eid 102 etid 102 c N_PDU n "" pe 40 cid 103
+
+E # 41 t 1 m 7 ce 40 msg 102
+CM id 104 tid 104 eid 104 etid 104 c omnetpp::cMessage n "" pe -1
+CL id 104 tid 104 eid 102 etid 102 c DL_PDU n "" pe 41 cid 105
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 38
+ES t 2
+BS id 104 tid 104 eid 102 etid 102 c DL_PDU n "" pe 41
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 1.1
+CL id 104 tid 104 eid 102 etid 102 c DL_PDU n "" pe 41 cid 106
+
+E # 42 t 1.1 m 9 ce 39 msg 98
+CM id 107 tid 107 eid 107 etid 107 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 37
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 98 tid 98 eid 98 etid 98 c omnetpp::cMessage n "" pe 42
+
+E # 43 t 1.1 m 9 ce 41 msg 104
+CM id 108 tid 108 eid 108 etid 108 c omnetpp::cMessage n "" pe -1
+CL id 102 tid 102 eid 102 etid 102 c N_PDU n "" pe 41 cid 109
+BS id 109 tid 102 eid 109 etid 102 c N_PDU n "" pe 43
+SH sm 9 sg 5
+ES t 1.1
+CL id 109 tid 102 eid 109 etid 102 c N_PDU n "" pe 43 cid 110
+BS id 108 tid 108 eid 108 etid 108 c DL_PDU n "" pe 43
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1.2
+CL id 108 tid 108 eid 108 etid 108 c DL_PDU n "" pe 43 cid 111
+
+E # 44 t 1.1 m 8 ce 43 msg 109
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 112 tid 112 eid 112 etid 112 c omnetpp::cMessage n "" pe -1
+BS id 112 tid 112 eid 112 etid 112 c N_PDU n "" pe 44
+SH sm 8 sg 3
+ES t 1.1
+CL id 112 tid 112 eid 112 etid 112 c N_PDU n "" pe 44 cid 113
+DM id 109 tid 102 eid 109 etid 102 c omnetpp::cMessage n "" pe 44
+- INFO : id  = 5Network Layer Sends ACK 
+
+E # 45 t 1.1 m 9 ce 44 msg 112
+CM id 114 tid 114 eid 114 etid 114 c omnetpp::cMessage n "" pe -1
+CL id 114 tid 114 eid 112 etid 112 c DL_PDU n "" pe 45 cid 115
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 42
+ES t 2.1
+BS id 114 tid 114 eid 112 etid 112 c DL_PDU n "" pe 45
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1.2
+CL id 114 tid 114 eid 112 etid 112 c DL_PDU n "" pe 45 cid 116
+
+E # 46 t 1.2 m 7 ce 43 msg 108
+CM id 117 tid 117 eid 117 etid 117 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 41
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 108 tid 108 eid 108 etid 108 c omnetpp::cMessage n "" pe 46
+
+E # 47 t 1.2 m 7 ce 45 msg 114
+CM id 118 tid 118 eid 118 etid 118 c omnetpp::cMessage n "" pe -1
+CL id 112 tid 112 eid 112 etid 112 c N_PDU n "" pe 45 cid 119
+BS id 119 tid 112 eid 119 etid 112 c N_PDU n "" pe 47
+SH sm 7 sg 5
+ES t 1.2
+CL id 119 tid 112 eid 119 etid 112 c N_PDU n "" pe 47 cid 120
+BS id 118 tid 118 eid 118 etid 118 c DL_PDU n "" pe 47
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 1.3
+CL id 118 tid 118 eid 118 etid 118 c DL_PDU n "" pe 47 cid 121
+
+E # 48 t 1.2 m 6 ce 47 msg 119
+CM id 122 tid 122 eid 122 etid 122 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 122 tid 122 eid 122 etid 122 c N_PDU n "" pe 48
+SH sm 6 sg 3
+ES t 1.2
+CL id 122 tid 122 eid 122 etid 122 c N_PDU n "" pe 48 cid 123
+
+E # 49 t 1.2 m 7 ce 48 msg 122
+CM id 124 tid 124 eid 124 etid 124 c omnetpp::cMessage n "" pe -1
+CL id 124 tid 124 eid 122 etid 122 c DL_PDU n "" pe 49 cid 125
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 46
+ES t 2.2
+BS id 124 tid 124 eid 122 etid 122 c DL_PDU n "" pe 49
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 1.3
+CL id 124 tid 124 eid 122 etid 122 c DL_PDU n "" pe 49 cid 126
+
+E # 50 t 1.3 m 9 ce 47 msg 118
+CM id 127 tid 127 eid 127 etid 127 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 45
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 118 tid 118 eid 118 etid 118 c omnetpp::cMessage n "" pe 50
+
+E # 51 t 1.3 m 9 ce 49 msg 124
+CM id 128 tid 128 eid 128 etid 128 c omnetpp::cMessage n "" pe -1
+CL id 122 tid 122 eid 122 etid 122 c N_PDU n "" pe 49 cid 129
+BS id 129 tid 122 eid 129 etid 122 c N_PDU n "" pe 51
+SH sm 9 sg 5
+ES t 1.3
+CL id 129 tid 122 eid 129 etid 122 c N_PDU n "" pe 51 cid 130
+BS id 128 tid 128 eid 128 etid 128 c DL_PDU n "" pe 51
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1.4
+CL id 128 tid 128 eid 128 etid 128 c DL_PDU n "" pe 51 cid 131
+
+E # 52 t 1.3 m 8 ce 51 msg 129
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 132 tid 132 eid 132 etid 132 c omnetpp::cMessage n "" pe -1
+BS id 132 tid 132 eid 132 etid 132 c N_PDU n "" pe 52
+SH sm 8 sg 3
+ES t 1.3
+CL id 132 tid 132 eid 132 etid 132 c N_PDU n "" pe 52 cid 133
+DM id 129 tid 122 eid 129 etid 122 c omnetpp::cMessage n "" pe 52
+- INFO : id  = 4Network Layer Sends ACK 
+
+E # 53 t 1.3 m 9 ce 52 msg 132
+CM id 134 tid 134 eid 134 etid 134 c omnetpp::cMessage n "" pe -1
+CL id 134 tid 134 eid 132 etid 132 c DL_PDU n "" pe 53 cid 135
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 50
+ES t 2.3
+BS id 134 tid 134 eid 132 etid 132 c DL_PDU n "" pe 53
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1.4
+CL id 134 tid 134 eid 132 etid 132 c DL_PDU n "" pe 53 cid 136
+
+E # 54 t 1.4 m 7 ce 51 msg 128
+CM id 137 tid 137 eid 137 etid 137 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 49
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 128 tid 128 eid 128 etid 128 c omnetpp::cMessage n "" pe 54
+
+E # 55 t 1.4 m 7 ce 53 msg 134
+CM id 138 tid 138 eid 138 etid 138 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: "Losing" message.
+BU id 7 txt "message lost"
+DM id 134 tid 134 eid 134 etid 134 c omnetpp::cMessage n "" pe 55
+
+E # 56 t 2.3 m 9 ce 53 msg 2
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timeout expired, resenting message and restarting timer
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 56
+ES t 3.3
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timeout Event DL  
+BS id 135 tid 134 eid 132 etid 132 c DL_PDU n "" pe 53
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 2.4
+CL id 135 tid 134 eid 132 etid 132 c DL_PDU n "" pe 56 cid 139
+BU id 9 txt resending
+
+E # 57 t 2.4 m 7 ce 56 msg 135
+CM id 140 tid 140 eid 140 etid 140 c omnetpp::cMessage n "" pe -1
+CL id 132 tid 132 eid 132 etid 132 c N_PDU n "" pe 53 cid 141
+BS id 141 tid 132 eid 141 etid 132 c N_PDU n "" pe 57
+SH sm 7 sg 5
+ES t 2.4
+CL id 141 tid 132 eid 141 etid 132 c N_PDU n "" pe 57 cid 142
+BS id 140 tid 140 eid 140 etid 140 c DL_PDU n "" pe 57
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 2.5
+CL id 140 tid 140 eid 140 etid 140 c DL_PDU n "" pe 57 cid 143
+
+E # 58 t 2.4 m 6 ce 57 msg 141
+CM id 144 tid 144 eid 144 etid 144 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 144 tid 144 eid 144 etid 144 c N_PDU n "" pe 58
+SH sm 6 sg 3
+ES t 2.4
+CL id 144 tid 144 eid 144 etid 144 c N_PDU n "" pe 58 cid 145
+
+E # 59 t 2.4 m 7 ce 58 msg 144
+CM id 146 tid 146 eid 146 etid 146 c omnetpp::cMessage n "" pe -1
+CL id 146 tid 146 eid 144 etid 144 c DL_PDU n "" pe 59 cid 147
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 54
+ES t 3.4
+BS id 146 tid 146 eid 144 etid 144 c DL_PDU n "" pe 59
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 2.5
+CL id 146 tid 146 eid 144 etid 144 c DL_PDU n "" pe 59 cid 148
+
+E # 60 t 2.5 m 9 ce 57 msg 140
+CM id 149 tid 149 eid 149 etid 149 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 56
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 140 tid 140 eid 140 etid 140 c omnetpp::cMessage n "" pe 60
+
+E # 61 t 2.5 m 9 ce 59 msg 146
+CM id 150 tid 150 eid 150 etid 150 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: "Losing" message.
+BU id 9 txt "message lost"
+DM id 146 tid 146 eid 146 etid 146 c omnetpp::cMessage n "" pe 61
+
+E # 62 t 3.4 m 7 ce 59 msg 1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timeout expired, resenting message and restarting timer
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 62
+ES t 4.4
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timeout Event DL  
+BS id 147 tid 146 eid 144 etid 144 c DL_PDU n "" pe 59
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 3.5
+CL id 147 tid 146 eid 144 etid 144 c DL_PDU n "" pe 62 cid 151
+BU id 7 txt resending
+
+E # 63 t 3.5 m 9 ce 62 msg 147
+CM id 152 tid 152 eid 152 etid 152 c omnetpp::cMessage n "" pe -1
+CL id 144 tid 144 eid 144 etid 144 c N_PDU n "" pe 59 cid 153
+BS id 153 tid 144 eid 153 etid 144 c N_PDU n "" pe 63
+SH sm 9 sg 5
+ES t 3.5
+CL id 153 tid 144 eid 153 etid 144 c N_PDU n "" pe 63 cid 154
+BS id 152 tid 152 eid 152 etid 152 c DL_PDU n "" pe 63
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 3.6
+CL id 152 tid 152 eid 152 etid 152 c DL_PDU n "" pe 63 cid 155
+
+E # 64 t 3.5 m 8 ce 63 msg 153
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 156 tid 156 eid 156 etid 156 c omnetpp::cMessage n "" pe -1
+BS id 156 tid 156 eid 156 etid 156 c N_PDU n "" pe 64
+SH sm 8 sg 3
+ES t 3.5
+CL id 156 tid 156 eid 156 etid 156 c N_PDU n "" pe 64 cid 157
+DM id 153 tid 144 eid 153 etid 144 c omnetpp::cMessage n "" pe 64
+- INFO : id  = 3Network Layer Sends ACK 
+
+E # 65 t 3.5 m 9 ce 64 msg 156
+CM id 158 tid 158 eid 158 etid 158 c omnetpp::cMessage n "" pe -1
+CL id 158 tid 158 eid 156 etid 156 c DL_PDU n "" pe 65 cid 159
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 60
+ES t 4.5
+BS id 158 tid 158 eid 156 etid 156 c DL_PDU n "" pe 65
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 3.6
+CL id 158 tid 158 eid 156 etid 156 c DL_PDU n "" pe 65 cid 160
+
+E # 66 t 3.6 m 7 ce 63 msg 152
+CM id 161 tid 161 eid 161 etid 161 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 62
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 152 tid 152 eid 152 etid 152 c omnetpp::cMessage n "" pe 66
+
+E # 67 t 3.6 m 7 ce 65 msg 158
+CM id 162 tid 162 eid 162 etid 162 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: "Losing" message.
+BU id 7 txt "message lost"
+DM id 158 tid 158 eid 158 etid 158 c omnetpp::cMessage n "" pe 67
+
+E # 68 t 4.5 m 9 ce 65 msg 2
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timeout expired, resenting message and restarting timer
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 68
+ES t 5.5
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timeout Event DL  
+BS id 159 tid 158 eid 156 etid 156 c DL_PDU n "" pe 65
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 4.6
+CL id 159 tid 158 eid 156 etid 156 c DL_PDU n "" pe 68 cid 163
+BU id 9 txt resending
+
+E # 69 t 4.6 m 7 ce 68 msg 159
+CM id 164 tid 164 eid 164 etid 164 c omnetpp::cMessage n "" pe -1
+CL id 156 tid 156 eid 156 etid 156 c N_PDU n "" pe 65 cid 165
+BS id 165 tid 156 eid 165 etid 156 c N_PDU n "" pe 69
+SH sm 7 sg 5
+ES t 4.6
+CL id 165 tid 156 eid 165 etid 156 c N_PDU n "" pe 69 cid 166
+BS id 164 tid 164 eid 164 etid 164 c DL_PDU n "" pe 69
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 4.7
+CL id 164 tid 164 eid 164 etid 164 c DL_PDU n "" pe 69 cid 167
+
+E # 70 t 4.6 m 6 ce 69 msg 165
+CM id 168 tid 168 eid 168 etid 168 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 168 tid 168 eid 168 etid 168 c N_PDU n "" pe 70
+SH sm 6 sg 3
+ES t 4.6
+CL id 168 tid 168 eid 168 etid 168 c N_PDU n "" pe 70 cid 169
+
+E # 71 t 4.6 m 7 ce 70 msg 168
+CM id 170 tid 170 eid 170 etid 170 c omnetpp::cMessage n "" pe -1
+CL id 170 tid 170 eid 168 etid 168 c DL_PDU n "" pe 71 cid 171
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 66
+ES t 5.6
+BS id 170 tid 170 eid 168 etid 168 c DL_PDU n "" pe 71
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 4.7
+CL id 170 tid 170 eid 168 etid 168 c DL_PDU n "" pe 71 cid 172
+
+E # 72 t 4.7 m 9 ce 69 msg 164
+CM id 173 tid 173 eid 173 etid 173 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 68
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 164 tid 164 eid 164 etid 164 c omnetpp::cMessage n "" pe 72
+
+E # 73 t 4.7 m 9 ce 71 msg 170
+CM id 174 tid 174 eid 174 etid 174 c omnetpp::cMessage n "" pe -1
+CL id 168 tid 168 eid 168 etid 168 c N_PDU n "" pe 71 cid 175
+BS id 175 tid 168 eid 175 etid 168 c N_PDU n "" pe 73
+SH sm 9 sg 5
+ES t 4.7
+CL id 175 tid 168 eid 175 etid 168 c N_PDU n "" pe 73 cid 176
+BS id 174 tid 174 eid 174 etid 174 c DL_PDU n "" pe 73
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 4.8
+CL id 174 tid 174 eid 174 etid 174 c DL_PDU n "" pe 73 cid 177
+
+E # 74 t 4.7 m 8 ce 73 msg 175
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 178 tid 178 eid 178 etid 178 c omnetpp::cMessage n "" pe -1
+BS id 178 tid 178 eid 178 etid 178 c N_PDU n "" pe 74
+SH sm 8 sg 3
+ES t 4.7
+CL id 178 tid 178 eid 178 etid 178 c N_PDU n "" pe 74 cid 179
+DM id 175 tid 168 eid 175 etid 168 c omnetpp::cMessage n "" pe 74
+- INFO : id  = 2Network Layer Sends ACK 
+
+E # 75 t 4.7 m 9 ce 74 msg 178
+CM id 180 tid 180 eid 180 etid 180 c omnetpp::cMessage n "" pe -1
+CL id 180 tid 180 eid 178 etid 178 c DL_PDU n "" pe 75 cid 181
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 72
+ES t 5.7
+BS id 180 tid 180 eid 178 etid 178 c DL_PDU n "" pe 75
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 4.8
+CL id 180 tid 180 eid 178 etid 178 c DL_PDU n "" pe 75 cid 182
+
+E # 76 t 4.8 m 7 ce 73 msg 174
+CM id 183 tid 183 eid 183 etid 183 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 71
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 174 tid 174 eid 174 etid 174 c omnetpp::cMessage n "" pe 76
+
+E # 77 t 4.8 m 7 ce 75 msg 180
+CM id 184 tid 184 eid 184 etid 184 c omnetpp::cMessage n "" pe -1
+CL id 178 tid 178 eid 178 etid 178 c N_PDU n "" pe 75 cid 185
+BS id 185 tid 178 eid 185 etid 178 c N_PDU n "" pe 77
+SH sm 7 sg 5
+ES t 4.8
+CL id 185 tid 178 eid 185 etid 178 c N_PDU n "" pe 77 cid 186
+BS id 184 tid 184 eid 184 etid 184 c DL_PDU n "" pe 77
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 4.9
+CL id 184 tid 184 eid 184 etid 184 c DL_PDU n "" pe 77 cid 187
+
+E # 78 t 4.8 m 6 ce 77 msg 185
+CM id 188 tid 188 eid 188 etid 188 c omnetpp::cMessage n "" pe -1
+BU id 6 txt "Deleted Ack NL"
+BS id 188 tid 188 eid 188 etid 188 c N_PDU n "" pe 78
+SH sm 6 sg 3
+ES t 4.8
+CL id 188 tid 188 eid 188 etid 188 c N_PDU n "" pe 78 cid 189
+
+E # 79 t 4.8 m 7 ce 78 msg 188
+CM id 190 tid 190 eid 190 etid 190 c omnetpp::cMessage n "" pe -1
+CL id 190 tid 190 eid 188 etid 188 c DL_PDU n "" pe 79 cid 191
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 76
+ES t 5.8
+BS id 190 tid 190 eid 188 etid 188 c DL_PDU n "" pe 79
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 4.9
+CL id 190 tid 190 eid 188 etid 188 c DL_PDU n "" pe 79 cid 192
+
+E # 80 t 4.9 m 9 ce 77 msg 184
+CM id 193 tid 193 eid 193 etid 193 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 75
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 184 tid 184 eid 184 etid 184 c omnetpp::cMessage n "" pe 80
+
+E # 81 t 4.9 m 9 ce 79 msg 190
+CM id 194 tid 194 eid 194 etid 194 c omnetpp::cMessage n "" pe -1
+CL id 188 tid 188 eid 188 etid 188 c N_PDU n "" pe 79 cid 195
+BS id 195 tid 188 eid 195 etid 188 c N_PDU n "" pe 81
+SH sm 9 sg 5
+ES t 4.9
+CL id 195 tid 188 eid 195 etid 188 c N_PDU n "" pe 81 cid 196
+BS id 194 tid 194 eid 194 etid 194 c DL_PDU n "" pe 81
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 5
+CL id 194 tid 194 eid 194 etid 194 c DL_PDU n "" pe 81 cid 197
+
+E # 82 t 4.9 m 8 ce 81 msg 195
+BU id 8 txt "Deleted Message NL"
+- INFO (Network_layer)LayerNetwork.Node2.NL: deleted 
+CM id 198 tid 198 eid 198 etid 198 c omnetpp::cMessage n "" pe -1
+BS id 198 tid 198 eid 198 etid 198 c N_PDU n "" pe 82
+SH sm 8 sg 3
+ES t 4.9
+CL id 198 tid 198 eid 198 etid 198 c N_PDU n "" pe 82 cid 199
+DM id 195 tid 188 eid 195 etid 188 c omnetpp::cMessage n "" pe 82
+- INFO : id  = 1Network Layer Sends ACK 
+
+E # 83 t 4.9 m 9 ce 82 msg 198
+CM id 200 tid 200 eid 200 etid 200 c omnetpp::cMessage n "" pe -1
+CL id 200 tid 200 eid 198 etid 198 c DL_PDU n "" pe 83 cid 201
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 80
+ES t 5.9
+BS id 200 tid 200 eid 198 etid 198 c DL_PDU n "" pe 83
+SH sm 9 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 5
+CL id 200 tid 200 eid 198 etid 198 c DL_PDU n "" pe 83 cid 202
+
+E # 84 t 5 m 7 ce 81 msg 194
+CM id 203 tid 203 eid 203 etid 203 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node1.DL: Timer cancelled.
+CE id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n timeoutEvent pe 79
+BU id 7 txt "Deleted acknowledgment DL"
+DM id 194 tid 194 eid 194 etid 194 c omnetpp::cMessage n "" pe 84
+
+E # 85 t 5 m 7 ce 83 msg 200
+CM id 204 tid 204 eid 204 etid 204 c omnetpp::cMessage n "" pe -1
+CL id 198 tid 198 eid 198 etid 198 c N_PDU n "" pe 83 cid 205
+BS id 205 tid 198 eid 205 etid 198 c N_PDU n "" pe 85
+SH sm 7 sg 5
+ES t 5
+CL id 205 tid 198 eid 205 etid 198 c N_PDU n "" pe 85 cid 206
+BS id 204 tid 204 eid 204 etid 204 c DL_PDU n "" pe 85
+SH sm 7 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 5.1
+CL id 204 tid 204 eid 204 etid 204 c DL_PDU n "" pe 85 cid 207
+
+E # 86 t 5 m 6 ce 85 msg 205
+
+E # 87 t 5.1 m 9 ce 85 msg 204
+CM id 208 tid 208 eid 208 etid 208 c omnetpp::cMessage n "" pe -1
+- INFO (Data_layer)LayerNetwork.Node2.DL: Timer cancelled.
+CE id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n timeoutEvent pe 83
+BU id 9 txt "Deleted acknowledgment DL"
+DM id 204 tid 204 eid 204 etid 204 c omnetpp::cMessage n "" pe 87
+SE e 0 c 13 m "No more events, simulation completed -- at t=5.1s, event #87"
