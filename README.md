@@ -1,2 +1,2 @@
-# Os-lab
-Solutions to some of the OS problems
+# Os-CN-lab
+Solutions to OS and CN labs problems
