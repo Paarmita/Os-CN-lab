@@ -1,0 +1,53 @@
+Ping 172.22.12.124
+
+Frame 86: 98 bytes on wire (784 bits), 98 bytes captured (784 bits) on interface 0
+    Interface id: 0 (enp3s0)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Apr 18, 2019 22:59:58.126354963 IST
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1555608598.126354963 seconds
+    [Time delta from previous captured frame: 0.000295005 seconds]
+    [Time delta from previous displayed frame: 0.000295005 seconds]
+    [Time since reference or first frame: 17.653847609 seconds]
+    Frame Number: 86
+    Frame Length: 98 bytes (784 bits)
+    Capture Length: 98 bytes (784 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:icmp:data]
+    [Coloring Rule Name: ICMP]
+    [Coloring Rule String: icmp || icmpv6]
+Ethernet II, Src: HewlettP_1f:74:a0 (34:64:a9:1f:74:a0), Dst: HewlettP_1f:7f:be (34:64:a9:1f:7f:be)
+    Destination: HewlettP_1f:7f:be (34:64:a9:1f:7f:be)
+    Source: HewlettP_1f:74:a0 (34:64:a9:1f:74:a0)
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 172.22.12.124, Dst: 172.22.12.185
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+    Total Length: 84
+    Identification: 0x7e48 (32328)
+    Flags: 0x0000
+    Time to live: 64
+    Protocol: ICMP (1)
+    Header checksum: 0x8aff [validation disabled]
+    [Header checksum status: Unverified]
+    Source: 172.22.12.124
+    Destination: 172.22.12.185
+Internet Control Message Protocol
+    Type: 0 (Echo (ping) reply)
+    Code: 0
+    Checksum: 0xfc8d [correct]
+    [Checksum Status: Good]
+    Identifier (BE): 7562 (0x1d8a)
+    Identifier (LE): 35357 (0x8a1d)
+    Sequence number (BE): 24 (0x0018)
+    Sequence number (LE): 6144 (0x1800)
+    [Request frame: 85]
+    [Response time: 0.295 ms]
+    Timestamp from icmp data: Apr 18, 2019 22:59:58.000000000 IST
+    [Timestamp from icmp data (relative): 0.126354963 seconds]
+    Data (48 bytes)
+        Data: 56ec010000000000101112131415161718191a1b1c1d1e1f...
+        [Length: 48]
+
